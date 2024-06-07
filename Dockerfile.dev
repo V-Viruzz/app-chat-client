@@ -1,0 +1,11 @@
+FROM node:20
+
+RUN mkdir -p /home/app
+RUN apt -y update && apt -y upgrade && apt -y install zsh git curl
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+WORKDIR /home/app
+
+EXPOSE 5173
+
+CMD [ "npm", "run", "dev" ]
